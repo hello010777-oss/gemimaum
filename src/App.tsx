@@ -138,6 +138,13 @@ export default function App() {
     return () => clearInterval(interval);
   }, [isAnalyzing]);
 
+  // Connect stream to video element after React renders the <video> tag
+  useEffect(() => {
+    if (videoRef.current && stream) {
+      videoRef.current.srcObject = stream;
+    }
+  }, [stream, cameraActive]);
+
   // Handle countdown recursive trigger
   useEffect(() => {
     if (countdown === null) return;
@@ -177,10 +184,7 @@ export default function App() {
       const mediaStream = await navigator.mediaDevices.getUserMedia(constraints);
       setStream(mediaStream);
       setCameraActive(true);
-      
-      if (videoRef.current) {
-        videoRef.current.srcObject = mediaStream;
-      }
+      // srcObject is assigned via useEffect after React re-renders the <video> tag
     } catch (err: any) {
       console.warn("Camera check failed relative to permission / device:", err);
       setCameraActive(false);
