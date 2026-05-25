@@ -1,0 +1,150 @@
+@import "tailwindcss";
+
+@import url('https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&display=swap');
+
+@font-face {
+  font-family: 'SchoolSafeOuting';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-5@1.0/HakgyoansimNadeuriTTF-L.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'SchoolSafeOuting';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-5@1.0/HakgyoansimNadeuriTTF-B.woff2') format('woff2');
+  font-weight: 700;
+  font-display: swap;
+}
+
+@theme {
+  --font-sans: "SchoolSafeOuting", "Gaegu", "Comic Sans MS", system-ui, sans-serif;
+  --font-cute: "SchoolSafeOuting", "Gaegu", cursive;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: #FFF0F3; /* Artistic Flair theme color fallback */
+  color: #4a3e40;
+}
+
+/* Background class matching design spec */
+.bg-custom {
+  background-image: url('https://i.imgur.com/1g3xEb5.png');
+  background-size: cover;
+  background-position: center;
+}
+
+/* Camera viewport border and shadow */
+.camera-view-container {
+  border: 12px solid #ffffff;
+  box-shadow: 0 10px 30px rgba(255, 182, 193, 0.6);
+  border-radius: 3rem;
+  overflow: hidden;
+  background-color: #ffffff;
+}
+
+/* Speech bubble styled from Design HTML with arrow pointing left */
+.speech-bubble {
+  position: relative;
+  background: #ffffff;
+  border-radius: 2rem;
+  border: 2px solid #ffd1dc;
+  filter: drop-shadow(0 8px 16px rgba(255, 182, 193, 0.15));
+}
+
+.speech-bubble::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 0;
+  height: 0;
+  border: 15px solid transparent;
+  border-right-color: #ffffff;
+  border-left: 0;
+  margin-top: -15px;
+  margin-left: -15px;
+  z-index: 2;
+}
+
+.speech-bubble::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 0;
+  height: 0;
+  border: 17px solid transparent;
+  border-right-color: #ffd1dc;
+  border-left: 0;
+  margin-top: -17px;
+  margin-left: -17px;
+  z-index: 1;
+}
+
+/* Countdown overlay popping shadow style */
+.countdown-overlay {
+  text-shadow: 5px 5px 0px rgba(255, 107, 107, 0.45);
+}
+
+/* Pastel theme action button */
+.btn-pastel {
+  background: linear-gradient(135deg, #FFD1DC 0%, #FFB7C5 100%);
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(255, 183, 197, 0.4);
+  transition: all 0.2s ease-in-out;
+}
+
+.btn-pastel:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.05);
+}
+
+.btn-pastel:active {
+  transform: translateY(0);
+}
+
+/* Base fade-in keyframes */
+@keyframes cuteFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-cute-fade-in {
+  animation: cuteFadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Garland style swing */
+@keyframes garlandSwing {
+  0%, 100% {
+    transform: rotate(-1deg);
+  }
+  50% {
+    transform: rotate(1deg);
+  }
+}
+
+.animate-garland-swing {
+  transform-origin: top center;
+  animation: garlandSwing 4s ease-in-out infinite;
+}
+
+/* Custom bounce for cute mascot */
+@keyframes mascotBounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.animate-mascot-bounce {
+  animation: mascotBounce 3s ease-in-out infinite;
+}

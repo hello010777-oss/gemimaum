@@ -1,0 +1,10 @@
+{
+  "name": "마음 사진기",
+  "description": "AI가 얼굴 표정과 포즈를 분석해 오늘의 감정 기록을 남겨주는 핑크 파스텔톤의 아기자기한 AI 마음 카메라",
+  "requestFramePermissions": [
+    "camera"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
