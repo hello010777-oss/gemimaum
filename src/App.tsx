@@ -107,6 +107,8 @@ export default function App() {
   const [selectedRecord, setSelectedRecord] = useState<SavedEmotionRecord | null>(null);
   // Deletion confirmation modal state
   const [recordToDelete, setRecordToDelete] = useState<string | null>(null);
+  // Toast notification state
+  const [toastMessage, setToastMessage] = useState<string | null>(null);
 
   // Initialize camera and load saved diaries on mount
   useEffect(() => {
@@ -340,14 +342,20 @@ export default function App() {
     setRecords(updated);
     localStorage.setItem("mind_camera_diaries", JSON.stringify(updated));
     
-    // Delight flash
     playSynthBeep(880, 0.25);
-    alert("🎀 머금던 진심이 그날의 마음 보관함에 고이 저장되었어요!");
-    
-    // Reset core screen state to default
+    showToast("🎀 머금던 진심이 그날의 마음 보관함에 고이 저장되었어요!");
+
+    // Reset state and restart camera
     setCapturedPhoto(null);
     setAnalysisResult(null);
     setUserVote(null);
+    startCamera();
+  };
+
+  // Show toast notification briefly
+  const showToast = (message: string) => {
+    setToastMessage(message);
+    setTimeout(() => setToastMessage(null), 3000);
   };
 
   // Delete Record Trigger
@@ -376,6 +384,20 @@ export default function App() {
     >
       {/* Decorative backdrop overlay */}
       <div className="absolute inset-0 bg-white/40 pointer-events-none" />
+
+      {/* Toast Notification */}
+      <AnimatePresence>
+        {toastMessage && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            className="fixed top-5 left-1/2 -translate-x-1/2 z-[100] bg-white border-2 border-pink-200 text-rose-700 font-cute font-bold text-sm px-6 py-3 rounded-2xl shadow-xl"
+          >
+            {toastMessage}
+          </motion.div>
+        )}
+      </AnimatePresence>
 
 
 
