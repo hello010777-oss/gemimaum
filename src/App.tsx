@@ -416,9 +416,6 @@ export default function App() {
               <h1 className="text-4xl font-cute font-bold text-[#FF85A1] drop-shadow-sm italic tracking-wide">
                 마음 사진기
               </h1>
-              <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-pink-150 text-pink-500 animate-pulse font-cute">
-                Gemini Vision
-              </span>
             </div>
             <p className="text-sm font-medium mt-1 text-[#B08992] tracking-wide font-cute opacity-90">
               오늘 너의 예쁜 마음을 담아줄게! ✨
@@ -437,9 +434,8 @@ export default function App() {
               <div className="bg-gradient-to-r from-pink-100 via-rose-200 to-pink-100 px-4 py-2 border-b-2 border-pink-100 flex justify-between items-center text-rose-700 font-cute font-semibold">
                 <span className="flex items-center gap-1.5">
                   <span className="w-3 h-3 rounded-full bg-rose-400 animate-ping inline-block" />
-                  실시간 마음 윙크 거울
+                  실시간 마음 거울
                 </span>
-                <span className="text-xs opacity-80">MIRROR PROTOCOL</span>
               </div>
 
               {/* Viewport Core Block */}
@@ -639,7 +635,7 @@ export default function App() {
               <div className="bg-rose-50 px-4 py-2 border-b-2 border-rose-100 flex justify-between items-center text-rose-700 font-cute font-semibold">
                 <span className="flex items-center gap-1.5">
                   <Smile className="w-4.5 h-4.5 text-rose-500 animate-bounce" />
-                  Gemini 마음 돋보기 결과
+                  마음 돋보기 결과
                 </span>
                 <span className="text-xs bg-rose-200/60 text-rose-800 px-2 py-0.5 rounded-full">AI REPORT</span>
               </div>
